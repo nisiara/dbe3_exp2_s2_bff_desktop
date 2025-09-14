@@ -1,4 +1,4 @@
-package com.bancoxyz.bff_atm.model.dto;
+package com.bancoxyz.bff_desktop.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

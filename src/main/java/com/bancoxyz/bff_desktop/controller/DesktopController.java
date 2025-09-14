@@ -1,4 +1,4 @@
-package com.bancoxyz.bff_atm.controller;
+package com.bancoxyz.bff_desktop.controller;
 
 import java.util.List;
 
@@ -9,36 +9,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bancoxyz.bff_atm.model.dto.AnnualAccountResponse;
-import com.bancoxyz.bff_atm.model.dto.InterestResponse;
-import com.bancoxyz.bff_atm.model.dto.TransactionResponse;
-import com.bancoxyz.bff_atm.service.ATMService;
+import com.bancoxyz.bff_desktop.model.dto.AnnualAccountResponse;
+import com.bancoxyz.bff_desktop.model.dto.InterestResponse;
+import com.bancoxyz.bff_desktop.model.dto.TransactionResponse;
+import com.bancoxyz.bff_desktop.service.DesktopService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/bff-atm")
-public class ATMController {
+@RequestMapping("/api/bff-desktop")
+public class DesktopController {
 
   @Autowired
-  private ATMService atmService;
+  private DesktopService desktopService;
 
-  public ATMController(ATMService atmService){
-    this.atmService = atmService;
+  public DesktopController(DesktopService desktopService){
+    this.desktopService = desktopService;
   }
 
   @GetMapping("/invalid-transaction")
   public ResponseEntity<List<TransactionResponse>> getInvalidTransactions(){
-    return ResponseEntity.ok(atmService.invalidTransactions());
+    return ResponseEntity.ok(desktopService.invalidTransactions());
   }    
 
   @GetMapping("/interest")
   public ResponseEntity<List<InterestResponse>> getAllInterests() {
-    return ResponseEntity.ok(atmService.findAllInterests());
+    return ResponseEntity.ok(desktopService.findAllInterests());
   }
 
   @GetMapping("/annual-account")
   public ResponseEntity<List<AnnualAccountResponse>> getAllAnnualAccounts() {
-    return ResponseEntity.ok(atmService.findAllAnnualAccounts());
+    return ResponseEntity.ok(desktopService.findAllAnnualAccounts());
   }
   
 }
