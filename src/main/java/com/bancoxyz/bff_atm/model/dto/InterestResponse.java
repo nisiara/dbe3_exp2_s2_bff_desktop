@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 
-public class InterestRespnse {
+public class InterestResponse {
   private String clientName;
   private Integer balance;
 }
