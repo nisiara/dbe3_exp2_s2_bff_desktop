@@ -11,6 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class InterestResponse {
+  private String accountId;
   private String clientName;
   private Integer balance;
+  private Integer clientAge;
+  private String interestType;
 }

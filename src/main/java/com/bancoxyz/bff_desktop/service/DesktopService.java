@@ -21,15 +21,9 @@ public class DesktopService {
     this.desktopRestClient = desktopRestClient;
   }
 
-  private List<TransactionResponse> findAllTransactions() {
+  public List<TransactionResponse> findAllTransactions() {
 		return desktopRestClient.findAllTransactions();
 	}
-
-  public List<TransactionResponse> invalidTransactions() {
-    return findAllTransactions().stream()
-      .filter(transaction -> transaction.getType().equalsIgnoreCase("invalid"))
-      .toList();
-  }
   
   public List<InterestResponse> findAllInterests() {
     return desktopRestClient.findAllInterests();
