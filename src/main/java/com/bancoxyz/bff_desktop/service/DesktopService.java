@@ -21,16 +21,24 @@ public class DesktopService {
     this.desktopRestClient = desktopRestClient;
   }
 
-  public List<TransactionResponse> findAllTransactions() {
-		return desktopRestClient.findAllTransactions();
-	}
+  
+  public List<TransactionResponse> validTransactions() {
+    return desktopRestClient.findAllTransactions().stream() 
+      .filter(transaction -> !transaction.getType().equalsIgnoreCase("invalid"))
+      .toList(); 
+  }
   
   public List<InterestResponse> findAllInterests() {
-    return desktopRestClient.findAllInterests();
+    return desktopRestClient.findAllInterests().stream()
+      .filter(interest -> !interest.getClientName().equalsIgnoreCase("unknown"))
+      .filter(interest -> interest.getBalance() != null)
+      .toList();
   }
 
   public List<AnnualAccountResponse> findAllAnnualAccounts() {
-    return desktopRestClient.findAllAnnualAccounts();
+    return desktopRestClient.findAllAnnualAccounts().stream()
+      .filter(account -> account.getAmount() != null)
+      .filter(account -> account.getTransactionDescription() != null)
+      .toList();
   }
-  
 }

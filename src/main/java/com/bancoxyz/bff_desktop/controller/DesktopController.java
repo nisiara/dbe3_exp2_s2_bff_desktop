@@ -26,9 +26,9 @@ public class DesktopController {
     this.desktopService = desktopService;
   }
 
-  @GetMapping("/transaction")
+  @GetMapping("/valid-transaction")
   public ResponseEntity<List<TransactionResponse>> getTransactions(){
-    return ResponseEntity.ok(desktopService.findAllTransactions());
+    return ResponseEntity.ok(desktopService.validTransactions());
   }    
 
   @GetMapping("/interest")
